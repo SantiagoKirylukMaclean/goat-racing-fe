@@ -1,0 +1,9 @@
+/* src/components/RootLayout.css */
+main {
+    transition: margin-top 0.3s ease; /* Para una transición suave */
+  }
+  
+  main.scrolled {
+    margin-top: 60px; /* Ajusta si tu header pequeño es más corto */
+  }
+  

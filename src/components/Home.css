@@ -1,0 +1,27 @@
+/* src/Home.css */
+.home-container {
+    display: flex;
+    flex-direction: column; /* Apila logo y texto verticalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center;     /* Centra el contenido horizontalmente */
+    height: 100vh;           /* Ocupa toda la altura de la vista */
+    padding: 0;              /* Sin padding */
+    margin: 0;               /* Sin margen */
+    box-sizing: border-box;  /* Incluye padding y borde en el tamaño total */
+  }
+  
+  .home-logo {
+    width: 80%;              /* Logo ocupa el 80% del ancho */
+    max-width: 2382px;      /* Ancho máximo del logo */
+    max-height: 1324px;     /* Alto máximo del logo */
+    height: auto;            /* Mantiene la proporción de la imagen */
+    margin-bottom: 20px;     /* Espacio entre el logo y el texto */
+  }
+  
+  .home {
+    font-size: 4rem;         /* Tamaño del texto */
+    color: #fff;             /* Cambiar el color del texto a blanco para contraste */
+    font-weight: bold;       /* Negrita */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Efecto de sombra opcional */
+  }
+  

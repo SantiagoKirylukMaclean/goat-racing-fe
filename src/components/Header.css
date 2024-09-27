@@ -1,0 +1,61 @@
+/* src/components/Header.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #000;
+    color: white;
+    position: fixed;
+    width: 100%; /* Al principio ocupa el 100% */
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: padding 0.3s ease, width 0.3s ease, left 0.3s ease, right 0.3s ease, border-radius 0.3s ease; /* Agregamos la transición para border-radius */
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box; /* Aseguramos que el padding no sume al ancho total */
+  }
+  
+  .header.small {
+    padding: 10px;  /* Reducimos padding al hacer scroll */
+    width: 90%;     /* Se reduce el ancho a 90% */
+    left: 5%;       /* Márgenes del 5% */
+    right: 5%;
+    border-radius: 10px; /* Bordes redondeados al hacer scroll */
+  }
+
+  .logo-image {
+    max-height: 30px; /* Ajusta la altura máxima del logo */
+    height: auto;     /* Mantiene la proporción */
+  }
+  
+  .header .logo {
+    font-size: 1.8rem; /* Ajusta el tamaño del logo para que se vea bien */
+    font-weight: bold;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin-left: 15px; /* Ajustamos el espaciado entre elementos */
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem; /* Ajustamos el tamaño de fuente */
+    padding: 5px 10px; /* Espacio interno en los enlaces */
+    transition: background-color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    background-color: #555; /* Cambio de color en hover */
+    border-radius: 4px; /* Un poco de borde redondeado */
+  }
+  

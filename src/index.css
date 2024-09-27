@@ -1,0 +1,22 @@
+/* src/index.css */
+body {
+  margin: 0;              /* Sin margen para el body */
+  padding: 0;             /* Sin padding para el body */
+  height: 100vh;          /* Asegura que el body ocupe toda la altura de la vista */
+  font-family: Arial, sans-serif;
+}
+
+main {
+  padding-top: 80px; /* Para evitar que el contenido quede bajo el header */
+  margin-left: 5%;   /* Margen del 5% a la izquierda */
+  margin-right: 5%;  /* Margen del 5% a la derecha */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tr {
+  border-bottom: 1px solid #ccc;
+}
