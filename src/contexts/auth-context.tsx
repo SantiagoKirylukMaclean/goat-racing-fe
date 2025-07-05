@@ -12,7 +12,15 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [permissions, setPermissions] = useState(['standings', 'timing', 'notes']);
+  const [permissions, setPermissions] = useState([
+    'standings',
+    'simulate',
+    'timing',
+    'tests',
+    'parts',
+    'notes'
+  ]);
+
 
   const canAccess = (resource: string) => {
     return permissions.includes(resource);

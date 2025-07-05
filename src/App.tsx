@@ -1,19 +1,35 @@
 import { AuthProvider } from './contexts/auth-context'
 import { ThemeProvider } from './contexts/theme-context'
-import Home from './components/Home'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './home/Home'
 import { Header } from './components/Header'
+import Standings from './standings/Standings'
+import SimulateWeekend from './simulate-weekend/SimulateWeekend'
+import Timing from './timing/Timing'
+import Tests from './tests/Tests'
+import Parts from './parts/Parts'
+import Notes from './notes/Notes'
 
 function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <div className="min-h-screen bg-background">
-          <Header />
-          <div className="container mx-auto py-8 px-4 mt-16">
-            <h1 className="text-3xl font-bold mb-8 text-center">Goat Racing Dashboard</h1>
-            <Home />
+        <BrowserRouter>
+          <div className="min-h-screen bg-background">
+            <Header />
+            <div className="container mx-auto py-8 px-4 mt-16">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/standings" element={<Standings />} />
+                <Route path="/simulate-events" element={<SimulateWeekend />} />
+                <Route path="/timing" element={<Timing />} />
+                <Route path="/tests" element={<Tests />} />
+                <Route path="/parts" element={<Parts />} />
+                <Route path="/notes" element={<Notes />} />
+              </Routes>
+            </div>
           </div>
-        </div>
+        </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>
   )

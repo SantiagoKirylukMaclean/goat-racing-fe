@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/theme-context";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -12,7 +13,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b py-3 px-4">
       <div className="container mx-auto flex items-center justify-between">
-        <div className="font-bold text-xl">GOAT RACING</div>
+        <Link to="/" className="font-bold text-xl hover:text-primary transition-colors">GOAT RACING</Link>
         <Button
           variant="ghost"
           size="icon"
