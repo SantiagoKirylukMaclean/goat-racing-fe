@@ -9,6 +9,8 @@ import Timing from './timing/Timing'
 import Tests from './tests/Tests'
 import Parts from './parts/Parts'
 import Notes from './notes/Notes'
+import Dashboard from './dashboard/Dashboard'
+import DashboardHome from './dashboard/DashboardHome'
 
 function App() {
   return (
@@ -17,17 +19,24 @@ function App() {
         <BrowserRouter>
           <div className="min-h-screen bg-background">
             <Header />
-            <div className="container mx-auto py-8 px-4 mt-16">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/standings" element={<Standings />} />
-                <Route path="/simulate-events" element={<SimulateWeekend />} />
-                <Route path="/timing" element={<Timing />} />
-                <Route path="/tests" element={<Tests />} />
-                <Route path="/parts" element={<Parts />} />
-                <Route path="/notes" element={<Notes />} />
-              </Routes>
-            </div>
+            <Routes>
+              <Route path="/dashboard" element={<Dashboard />}>
+                <Route index element={<DashboardHome />} />
+              </Route>
+              <Route path="*" element={
+                <div className="container mx-auto py-8 px-4 mt-16">
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/standings" element={<Standings />} />
+                    <Route path="/simulate-events" element={<SimulateWeekend />} />
+                    <Route path="/timing" element={<Timing />} />
+                    <Route path="/tests" element={<Tests />} />
+                    <Route path="/parts" element={<Parts />} />
+                    <Route path="/notes" element={<Notes />} />
+                  </Routes>
+                </div>
+              } />
+            </Routes>
           </div>
         </BrowserRouter>
       </AuthProvider>
