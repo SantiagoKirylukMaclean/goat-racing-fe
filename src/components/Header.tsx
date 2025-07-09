@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/theme-context";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { LoginDialog } from "@/components/LoginDialog";
 
 export function Header() {
   const { theme, setTheme } = useTheme();
@@ -25,6 +26,7 @@ export function Header() {
               <LayoutDashboard className="h-5 w-5" />
             </Button>
           </Link>
+          <LoginDialog />
           <Button
             variant="ghost"
             size="icon"

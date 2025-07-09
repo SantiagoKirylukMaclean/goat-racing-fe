@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -10,17 +10,24 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [permissions, setPermissions] = useState([
-    'standings',
-    'simulate',
-    'timing',
-    'tests',
-    'parts',
-    'notes'
-  ]);
+// Helper function to check if auth cookie exists
+const hasAuthCookie = (): boolean => {
+  return document.cookie.split(';').some(item => item.trim().startsWith('auth_token='));
+};
 
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [permissions, setPermissions] = useState<string[]>([]);
+
+  // Check for auth cookie on mount
+  useEffect(() => {
+    if (hasAuthCookie()) {
+      setIsAuthenticated(true);
+      // For now, we'll use hardcoded permissions
+      // In a real app, you would fetch these from an API
+      setPermissions(['standings', 'timing', 'notes']);
+    }
+  }, []);
 
   const canAccess = (resource: string) => {
     return permissions.includes(resource);
@@ -28,7 +35,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = () => {
     setIsAuthenticated(true);
-    // In a real app, you would fetch permissions from an API
+    // For now, we'll use hardcoded permissions
+    // In a real app, you would fetch these from an API
     setPermissions(['standings', 'timing', 'notes']);
   };
 
