@@ -29,9 +29,12 @@ export function LoginDialog() {
     setError(null);
     setIsLoading(true);
 
+    // Log the API URL from environment variable to verify it's loaded correctly
+    console.log('API URL from env:', import.meta.env.VITE_API_URL);
+
     try {
-      // Use relative URL to leverage the Vite proxy
-      const response = await fetch('/api/v1/auth/login', {
+      // Use API URL from environment variable
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
