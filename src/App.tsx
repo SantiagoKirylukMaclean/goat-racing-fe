@@ -11,6 +11,7 @@ import Parts from './parts/Parts'
 import Notes from './notes/Notes'
 import Dashboard from './dashboard/Dashboard'
 import DashboardHome from './dashboard/DashboardHome'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -20,7 +21,11 @@ function App() {
           <div className="min-h-screen bg-background">
             <Header />
             <Routes>
-              <Route path="/dashboard" element={<Dashboard />}>
+              <Route path="/dashboard" element={
+                <ProtectedRoute requireAdmin={true}>
+                  <Dashboard />
+                </ProtectedRoute>
+              }>
                 <Route index element={<DashboardHome />} />
               </Route>
               <Route path="*" element={
