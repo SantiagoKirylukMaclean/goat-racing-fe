@@ -55,6 +55,11 @@ export function LoginDialog() {
 
       const data = await response.json();
 
+      // Store the access token in localStorage
+      if (data.accessToken) {
+        localStorage.setItem('accessToken', data.accessToken);
+      }
+
       // The server should set the HttpOnly cookie in the response
       // We don't need to manually set it here
 

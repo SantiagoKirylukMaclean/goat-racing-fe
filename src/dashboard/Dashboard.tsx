@@ -1,4 +1,4 @@
-import { Home } from "lucide-react"
+import { Home, Users } from "lucide-react"
 import { Link, Outlet, useLocation } from "react-router-dom"
 import { 
   Sidebar, 
@@ -26,6 +26,14 @@ export function Dashboard() {
             >
               <Home className="h-4 w-4" />
               Home
+            </SidebarNavItem>
+            <SidebarNavItem 
+              as={Link} 
+              to="/dashboard/teams" 
+              active={location.pathname === "/dashboard/teams"}
+            >
+              <Users className="h-4 w-4" />
+              Teams
             </SidebarNavItem>
           </SidebarNav>
         </SidebarSection>

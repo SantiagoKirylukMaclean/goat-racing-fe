@@ -7,6 +7,7 @@ interface AuthContextType {
   canAccess: (resource: string) => boolean;
   login: () => void;
   logout: () => void;
+  getAccessToken: () => string | null;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -50,10 +51,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsAuthenticated(false);
     setPermissions([]);
     setIsAdmin(false);
+    // Clear the access token from localStorage
+    localStorage.removeItem('accessToken');
+  };
+
+  const getAccessToken = () => {
+    return localStorage.getItem('accessToken');
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, permissions, isAdmin, canAccess, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, permissions, isAdmin, canAccess, login, logout, getAccessToken }}>
       {children}
     </AuthContext.Provider>
   );

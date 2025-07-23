@@ -11,6 +11,7 @@ import Parts from './parts/Parts'
 import Notes from './notes/Notes'
 import Dashboard from './dashboard/Dashboard'
 import DashboardHome from './dashboard/DashboardHome'
+import Teams from './teams/Teams'
 import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                 </ProtectedRoute>
               }>
                 <Route index element={<DashboardHome />} />
+                <Route path="teams" element={<Teams />} />
               </Route>
               <Route path="*" element={
                 <div className="container mx-auto py-8 px-4 mt-16">
