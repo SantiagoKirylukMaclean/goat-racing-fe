@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, ReactNode, useEffect } from
 interface AuthContextType {
   isAuthenticated: boolean;
   permissions: string[];
+  isAdmin: boolean;
   canAccess: (resource: string) => boolean;
   login: () => void;
   logout: () => void;
@@ -18,6 +19,7 @@ const hasAuthCookie = (): boolean => {
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [permissions, setPermissions] = useState<string[]>([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   // Check for auth cookie on mount
   useEffect(() => {
@@ -26,6 +28,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // For now, we'll use hardcoded permissions
       // In a real app, you would fetch these from an API
       setPermissions(['standings', 'timing', 'notes']);
+      // Check if user is admin - in a real app, this would be determined by the server
+      setIsAdmin(true); // For demonstration, we'll set all authenticated users as admin
     }
   }, []);
 
@@ -38,15 +42,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // For now, we'll use hardcoded permissions
     // In a real app, you would fetch these from an API
     setPermissions(['standings', 'timing', 'notes']);
+    // Set admin status - in a real app, this would be determined by the server
+    setIsAdmin(true); // For demonstration, we'll set all authenticated users as admin
   };
 
   const logout = () => {
     setIsAuthenticated(false);
     setPermissions([]);
+    setIsAdmin(false);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, permissions, canAccess, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, permissions, isAdmin, canAccess, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -4,28 +4,32 @@ import * as React from "react";
 import { Moon, Sun, LayoutDashboard } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/contexts/theme-context";
+import { useAuth } from "@/contexts/auth-context";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { LoginDialog } from "@/components/LoginDialog";
 
 export function Header() {
   const { theme, setTheme } = useTheme();
+  const { isAuthenticated, isAdmin } = useAuth();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b py-3 px-4">
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/" className="font-bold text-xl hover:text-primary transition-colors">GOAT RACING</Link>
         <div className="flex items-center space-x-2">
-          <Link to="/dashboard">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full"
-              aria-label="Dashboard"
-            >
-              <LayoutDashboard className="h-5 w-5" />
-            </Button>
-          </Link>
+          {isAuthenticated && isAdmin && (
+            <Link to="/dashboard">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full"
+                aria-label="Dashboard"
+              >
+                <LayoutDashboard className="h-5 w-5" />
+              </Button>
+            </Link>
+          )}
           <LoginDialog />
           <Button
             variant="ghost"
